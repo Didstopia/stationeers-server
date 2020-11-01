@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
+# Enable debugging
+#set -x
+
+# Setup error handling
 set -e
 set -o pipefail
+
+# Print the user we're currently running as
+echo "Running as user: $(whoami)"
 
 # Define the exit handler
 exit_handler()
@@ -33,13 +40,13 @@ if [ ! -f "/steamcmd/stationeers/rocketstation_DedicatedServer.x86_64" ]; then
 	echo ""
 	echo "Installing Stationeers.."
 	echo ""
-	bash /steamcmd/steamcmd.sh +runscript /install.txt
+	bash /steamcmd/steamcmd.sh +runscript /app/install.txt
 else
 	# Install Stationeers from install.txt
 	echo ""
 	echo "Updating Stationeers.."
 	echo ""
-	bash /steamcmd/steamcmd.sh +runscript /install.txt
+	bash /steamcmd/steamcmd.sh +runscript /app/install.txt
 fi
 
 # Set the working directory
@@ -58,8 +65,6 @@ echo ""
 	-autosaveinterval=${STATIONEERS_SERVER_SAVE_INTERVAL} \
 	-servername "${STATIONEERS_SERVER_NAME}" \
 	2>&1 &
-
-## FIXME: Shutdown is not properly handled (should be handled through RCON, I guess?)
 
 child=$!
 wait "$child"
