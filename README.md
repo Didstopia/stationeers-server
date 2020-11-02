@@ -10,7 +10,7 @@
 2. Optionally mount ```/steamcmd/stationeers``` somewhere on the host or inside another container to keep your data safe
 3. Enjoy!
 
-*Be sure to edit `default.ini` to further customize your installation.*
+*You might alternatively edit `default.ini` to further customize your installation, but this hasn't been fully tested. Using environment variables is the only recommended way at the moment.*
 
 The following environment variables are available:
 ```
@@ -20,6 +20,7 @@ STATIONEERS_WORLD_NAME  (DEFAULT: "docker" - World name, mainly used for save na
 STATIONEERS_SERVER_SAVE_INTERVAL (DEFAULT: "300" - Automatic save interval in seconds)
 STATIONEERS_GAME_PORT (DEFAULT: "27500" - Used for both incoming client connections (UDP) and the web-interface (TCP))
 STATIONEERS_QUERY_PORT (DEFAULT: "27015" - Steam query port (UDP))
+STATIONEERS_SERVER_PASSWORD (DEFAULT: "" - Server password)
 ```
 
 ## Administering the server
